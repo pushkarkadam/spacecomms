@@ -56,8 +56,12 @@ Example: `help(encypt_image)`
 Help on function encrypt_image in module spacecomms.image_comms:
 
 encrypt_image(image, directory='image_storage/encrypted_files')
-    :param image: Image to be encrypted
-    :param derectory: Path to store the files.
+    Creates text files out of the images and a signature using encryption.
+    Every channel of the image is stored in a separate text file.
+    The output will be stored in the `directory` which is default to `image_storage/encrypted_files`.
+    
+    :param image: Image to be encrypted.
+    :param derectory: Path to store the files (DEFAULT="image_storage/encrypted_files").
 (END)
 ```
 

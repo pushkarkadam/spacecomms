@@ -9,8 +9,12 @@ import zipfile
 
 def encrypt_image(image, directory="image_storage/encrypted_files"):
     """
-    :param image: Image to be encrypted
-    :param derectory: Path to store the files.
+    Creates text files out of the images and a signature using encryption.
+    Every channel of the image is stored in a separate text file.
+    The output will be stored in the `directory` which is default to `image_storage/encrypted_files`.
+
+    :param image: Image to be encrypted.
+    :param derectory: Path to store the files (DEFAULT="image_storage/encrypted_files").
     """
 
     img = cv2.imread(image)
@@ -44,6 +48,10 @@ def encrypt_image(image, directory="image_storage/encrypted_files"):
 
 def get_signature(directory):
     """
+    Takes the directory path as the input.
+    Finds the `signature.txt` file in the directory.
+    Reads the encryption and returns the encryption.
+
     :param directory: Directory where the signature file is located.
     :returns signature: signature created using image.
     """
@@ -60,7 +68,12 @@ def get_signature(directory):
 
 def verify_signature(signature, directory):
     """
-    :param signature: Hash of signature to verify.
+    Takes the signature as a string and the directory where the signature is stored.
+    The signature is verified with the `signature.txt` file.
+    If the signature matches exactly, the function returns `True` if the signature matches.
+    Otherwise, the function returns `False`.
+
+    :param str signature: Hash of signature to verify.
     :param directory: Directory where the signature of image is placed.
 
     :return boolean: True if the signature matches.
@@ -76,6 +89,9 @@ def verify_signature(signature, directory):
 
 def decrypt_image(directory):
     """
+    Takes the `directory` as a path to which the `blue.txt`, `green.txt`, and `red.txt` are stored.
+    The function creates an image with name `image.jpg` in the same `directory`.
+
     :param directory: directory to read the image files from.
     """
 
