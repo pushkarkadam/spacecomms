@@ -106,3 +106,26 @@ def decrypt_image(directory):
     image = cv2.merge((blue, green, red))
 
     cv2.imwrite(directory + "/" + "image.jpg", image)
+
+
+def compress_images(directory, name="images"):
+    """
+    Compresses the images present in the folder along with the `signature.txt`
+
+    :param directory: Directory that will be compressed.
+    :param name: Name of the compressed file.
+    """
+
+    filename = directory + "/" + name + ".zip"
+
+    blue = directory + "/" + "blue.txt"
+    green = directory + "/" + "green.txt"
+    red = directory + "/" + "red.txt"
+
+    signature = directory + "/" + "signature.txt"
+
+    with zipfile.ZipFile(filename, "w") as f:
+        f.write(blue)
+        f.write(green)
+        f.write(red)
+        f.write(signature)
